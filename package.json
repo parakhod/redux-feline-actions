@@ -24,5 +24,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1"
   },
-  "homepage": "https://github.com/parakhod/redux-feline-actions#readme"
+  "homepage": "https://github.com/parakhod/redux-feline-actions#readme",
+  "dependencies": {}
 }
