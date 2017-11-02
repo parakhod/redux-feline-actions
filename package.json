@@ -1,6 +1,6 @@
 {
   "name": "redux-feline-actions",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easiest way to create Redux actions",
   "main": "dist/index.js",
   "scripts": {

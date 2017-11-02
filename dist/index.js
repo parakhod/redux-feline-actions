@@ -15,20 +15,24 @@ var getReducerName = function getReducerName(s) {
 };
 
 var createActions = function createActions(actions) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   return (typeof actions === 'undefined' ? 'undefined' : _typeof(actions)) !== 'object' ? new Error('Cannot create actions from ' + (typeof actions === 'undefined' ? 'undefined' : _typeof(actions)) + ', should be an object') : Object.keys(actions).reduce(function (p, name) {
     return _extends({}, p, _defineProperty({}, name, function () {
       var action = actions[name];
 
       var payloadData = typeof action === 'function' ? action.apply(undefined, arguments) : action;
 
-      var reducerName = getReducerName(payloadData.useReducer || name);
+      var prefix = options.prefix;
+
+
+      var reducerName = getReducerName(payloadData.useReducer || (prefix ? prefix + '/' + name : name));
 
       var payload = {};
       var meta = {};
 
       if (payloadData) {
         payload = {
-          payload: payloadData.payload || payloadData
+          payload: payloadData.payload ? typeof payloadData.payload === 'function' ? payloadData.payload() : payloadData.payload : payloadData
         };
 
         if (payloadData.meta) {
